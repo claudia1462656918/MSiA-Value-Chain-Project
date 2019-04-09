@@ -29,6 +29,7 @@ Business outcome metric: Correct prediction of clients’ subscription to the te
 
 
 
+
 ## Project Backlog
 
 **Theme 1**
@@ -208,5 +209,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5MDYzMTcyMV19
+eyJoaXN0b3J5IjpbLTE3NjQxNTk1NTcsMTQ5MDYzMTcyMV19
 -->
