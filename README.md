@@ -1,0 +1,212 @@
+# Example project repository
+
+<!-- toc -->
+
+- [Project Charter](#project-charter)
+- [Project Backlog](#project-backlog)
+- [Repo structure](#repo-structure)
+- [Documentation](#documentation)
+- [Running the application](#running-the-application)
+  * [1. Set up environment](#1-set-up-environment)
+    + [With `virtualenv` and `pip`](#with-virtualenv-and-pip)
+    + [With `conda`](#with-conda)
+  * [2. Configure Flask app](#2-configure-flask-app)
+  * [3. Initialize the database](#3-initialize-the-database)
+  * [4. Run the application](#4-run-the-application)
+- [Testing](#testing)
+
+<!-- tocstop -->
+
+## Project Charter 
+
+**Vision**: Increase clients’ acceptance of the marketing campaign and their interest in term deposit 
+
+**Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
+
+**Success criteria**: Machine learning performance metric: Use a set of metrics (accuracy score, confusion matrix, AUC) for evaluation. The minimum value for accuracy is greater than 0.89 since the breakdown of the target variable is 89:11
+
+Business outcome metric: Correct prediction of clients’ subscription to the term deposit 
+
+
+
+_Note_: Project charters should actually be more detailed than this! But this is where the charter belongs.  
+
+
+## Project Backlog
+
+**Theme 1**
+
+* Development of the best model for identifying clients who are willing to purchase the financial product (term deposit) 
+
+ **Epic** 
+ 
+ * Comparison of all different models for prediction 
+ 
+   **Backlog**
+   
+   * Perform summary analysis of each parameter and plot distribution –2 points (planned for the next two weeks)
+   
+   * Reduce the number of classes for categorical variables (month of contact) –2 points (planned for the next two weeks)
+   
+   * Convert continuous variables to categorical variables for convenience (age) –2 points (planned for the next two weeks)
+   
+   * Investigate the relationship between clients that subscribe to the term deposit and those do not and their married status, balance, previous success of previous marketing campaign, and number of contacts performed before this campaign for clients (most likely factors) –2 points (planned for the next two weeks)
+   
+   * Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
+   
+   * Perform different dimension reduction methods to select variables that can be later used in training the predictive model –2 points (planned for the next two weeks)
+	     
+   * Train different models that are applicable to the data set –4 points 
+   
+   * Examine which metric is more appropriate for different models using cross validation –2 points 
+   
+   **Icebox**
+   
+    * Engineer features to describe clients’ affordability
+   
+      -Perform summary analysis of each parameter of new features generated and plot distribution   
+      
+      -Detect whether new features have strong correlation with features that are selected earlier 
+
+**Theme 2**
+
+* Classification of different clients’ types to help inform bank decision about advertising financial product to the right target population 
+
+ **Epic** 
+ 
+ * Analysis of different clusters of clients 
+ 
+   **Backlog**
+   
+   * Select the proper number of clusters –2 points (planned for the next two weeks)
+   
+   * Compare clusters according to features used in segmentation –2 points (planned for the next two weeks)
+   
+   * Identify, if possible, the relationship between the cluster and clients’ subscription of the term deposit –2 points 
+   
+
+
+## Repo structure 
+
+```
+├── README.md                         <- You are here
+│
+├── app
+│   ├── static/                       <- CSS, JS files that remain static 
+│   ├── templates/                    <- HTML (or other code) that is templated and changes based on a set of inputs
+│   ├── models.py                     <- Creates the data model for the database connected to the Flask app 
+│   ├── __init__.py                   <- Initializes the Flask app and database connection
+│
+├── config                            <- Directory for yaml configuration files for model training, scoring, etc
+│   ├── logging/                      <- Configuration files for python loggers
+│
+├── data                              <- Folder that contains data used or generated. Only the external/ and sample/ subdirectories are tracked by git. 
+│   ├── archive/                      <- Place to put archive data is no longer usabled. Not synced with git. 
+│   ├── external/                     <- External data sources, will be synced with git
+│   ├── sample/                       <- Sample data used for code development and testing, will be synced with git
+│
+├── docs                              <- A default Sphinx project; see sphinx-doc.org for details.
+│
+├── figures                           <- Generated graphics and figures to be used in reporting.
+│
+├── models                            <- Trained model objects (TMOs), model predictions, and/or model summaries
+│   ├── archive                       <- No longer current models. This directory is included in the .gitignore and is not tracked by git
+│
+├── notebooks
+│   ├── develop                       <- Current notebooks being used in development.
+│   ├── deliver                       <- Notebooks shared with others. 
+│   ├── archive                       <- Develop notebooks no longer being used.
+│   ├── template.ipynb                <- Template notebook for analysis with useful imports and helper functions. 
+│
+├── src                               <- Source data for the project 
+│   ├── archive/                      <- No longer current scripts.
+│   ├── helpers/                      <- Helper scripts used in main src files 
+│   ├── sql/                          <- SQL source code
+│   ├── add_songs.py                  <- Script for creating a (temporary) MySQL database and adding songs to it 
+│   ├── ingest_data.py                <- Script for ingesting data from different sources 
+│   ├── generate_features.py          <- Script for cleaning and transforming data and generating features used for use in training and scoring.
+│   ├── train_model.py                <- Script for training machine learning model(s)
+│   ├── score_model.py                <- Script for scoring new predictions using a trained model.
+│   ├── postprocess.py                <- Script for postprocessing predictions and model results
+│   ├── evaluate_model.py             <- Script for evaluating model performance 
+│
+├── test                              <- Files necessary for running model tests (see documentation below) 
+
+├── run.py                            <- Simplifies the execution of one or more of the src scripts 
+├── app.py                            <- Flask wrapper for running the model 
+├── config.py                         <- Configuration file for Flask app
+├── requirements.txt                  <- Python package dependencies 
+```
+This project structure was partially influenced by the [Cookiecutter Data Science project](https://drivendata.github.io/cookiecutter-data-science/).
+
+## Documentation
+ 
+* Open up `docs/build/html/index.html` to see Sphinx documentation docs. 
+* See `docs/README.md` for keeping docs up to date with additions to the repository.
+
+## Running the application 
+### 1. Set up environment 
+
+The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+
+#### With `virtualenv`
+
+```bash
+pip install virtualenv
+
+virtualenv pennylane
+
+source pennylane/bin/activate
+
+pip install -r requirements.txt
+
+```
+#### With `conda`
+
+```bash
+conda create -n pennylane python=3.7
+conda activate pennylane
+pip install -r requirements.txt
+
+```
+
+### 2. Configure Flask app 
+
+`config.py` holds the configurations for the Flask app. It includes the following configurations:
+
+```python
+DEBUG = True  # Keep True for debugging, change to False when moving to production 
+LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
+PORT = 3002  # What port to expose app on 
+SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/tracks.db'  # URI for database that contains tracks
+
+```
+
+
+### 3. Initialize the database 
+
+To create the database in the location configured in `config.py` with one initial song, run: 
+
+`python run.py create --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
+
+To add additional songs:
+
+`python run.py ingest --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
+
+
+### 4. Run the application 
+ 
+ ```bash
+ python app.py 
+ ```
+
+### 5. Interact with the application 
+
+Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of hte app. 
+
+## Testing 
+
+Run `pytest` from the command line in the main project repository. 
+
+
+Tests exist in `test/test_helpers.py`
