@@ -25,7 +25,8 @@
 
 **Success criteria**: Machine learning performance metric: Use a set of metrics (accuracy score, confusion matrix, AUC) for evaluation. The minimum value for accuracy is greater than 0.89 since the breakdown of the target variable is 89:11
 
-Business outcome metric: Before applying Correct prediction of clients’ subscription to the term deposit 
+Business outcome metric: For each quarter, before applying the predictive model to improve the subscription rate, record the sub 
+Before applying Correct prediction of clients’ subscription to the term deposit 
 
 
 
@@ -209,6 +210,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5ODk4NjIwMiwtMTc2NDE1OTU1NywxND
-kwNjMxNzIxXX0=
+eyJoaXN0b3J5IjpbNzgwMDEwNTQ5LC0xNzY0MTU5NTU3LDE0OT
+A2MzE3MjFdfQ==
 -->
