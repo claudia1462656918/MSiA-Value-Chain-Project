@@ -29,9 +29,6 @@ Business outcome metric: Correct prediction of clients’ subscription to the te
 
 
 
-_Note_: Project charters should actually be more detailed than this! But this is where the charter belongs.  
-
-
 ## Project Backlog
 
 **Theme 1**
@@ -210,3 +207,6 @@ Run `pytest` from the command line in the main project repository.
 
 
 Tests exist in `test/test_helpers.py`
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQ5MDYzMTcyMV19
+-->
