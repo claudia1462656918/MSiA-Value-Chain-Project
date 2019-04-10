@@ -68,7 +68,9 @@ Business outcome metric: Assess whether there exists a significant improvement i
    **Icebox**
    
     * Engineer features to describe clients’ affordability
+    
     * Perform summary analysis of each parameter of new features generated and plot distribution 
+
     * Detect whether new features have strong correlation with features that are selected earlier 
 
 **Theme 2**
@@ -216,5 +218,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMzIzMjk4NV19
+eyJoaXN0b3J5IjpbMTM0NDg4MzU0NV19
 -->
