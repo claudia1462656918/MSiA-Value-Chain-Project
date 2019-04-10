@@ -86,8 +86,10 @@ Business outcome metric: Assess whether there exists a significant improvement i
    * Select the proper number of clusters –2 points (planned for the next two weeks)
    
    * Compare clusters according to features used in segmentation –2 points (planned for the next two weeks)
-   
-   * Identify, if possible, the relationship between the cluster and clients’ subscription of the term deposit –2 points 
+
+ **Icebox**
+ 
+   * Identify the relationship between the cluster and clients’ subscription of the term deposit –2 points 
    
 
 
@@ -216,5 +218,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0NjI3MDc1LC0xMTcxNDQ1MTkwXX0=
+eyJoaXN0b3J5IjpbMTQ5OTY5MTQ3MSwtMTE3MTQ0NTE5MF19
 -->
