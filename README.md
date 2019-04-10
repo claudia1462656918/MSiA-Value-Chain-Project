@@ -89,7 +89,7 @@ Business outcome metric: Assess whether there exists a significant improvement i
 
 	**Icebox**
  
-   * Identify the relationship between the cluster and clients’ subscription of the term deposit –2 points 
+   * Identify the relationship between the cluster and clients’ subscription of the term deposit 
    
 
 
@@ -218,5 +218,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NzUyNzU1XX0=
+eyJoaXN0b3J5IjpbNDYwNTY1MjM5XX0=
 -->
