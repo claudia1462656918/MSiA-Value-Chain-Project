@@ -47,8 +47,11 @@ Business outcome metric: Assess whether there exists a significant improvement i
    * Examine which metric is more appropriate to evaluate all models –2 points 
    
    * Perform different methods to see variable importance and select those for later model training if necessary  –2 points (planned for the next two weeks)
- * 
- * Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
+   
+   * Data preparation for different models using one hot encoding and other cleansing methods –2 points (planned for the next two weeks)
+
+
+	* Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
 
    * Perform summary analysis of each parameter and plot distribution –2 points (planned for the next two weeks)
    
@@ -213,5 +216,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3MDM2NzA5OCwtMTE3MTQ0NTE5MF19
+eyJoaXN0b3J5IjpbMTI0NjI3MDc1LC0xMTcxNDQ1MTkwXX0=
 -->
