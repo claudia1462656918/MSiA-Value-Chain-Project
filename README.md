@@ -42,6 +42,10 @@ Business outcome metric: Assess whether there exists a significant improvement i
  
    **Backlog**
    
+   * Train different models that are applicable to the data set –4 points 
+   
+   * Examine which metric is more appropriate to evaluate all models –2 points 
+   
    * Perform summary analysis of each parameter and plot distribution –2 points (planned for the next two weeks)
    
    * Reduce the number of classes for categorical variables (month of contact) –2 points (planned for the next two weeks)
@@ -50,11 +54,9 @@ Business outcome metric: Assess whether there exists a significant improvement i
    
    * Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
    
-   * Perform different dimension reduction methods to select variables that can be later used in training the predictive model –2 points (planned for the next two weeks)
-	     
-   * Train different models that are applicable to the data set –4 points 
    
-   * Examine which metric is more appropriate for different models using cross validation –2 points 
+	     
+   
    
    **Icebox**
    
@@ -207,5 +209,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzE0NDUxOTBdfQ==
+eyJoaXN0b3J5IjpbMTUxODY4NDM3NywtMTE3MTQ0NTE5MF19
 -->
