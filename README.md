@@ -48,8 +48,6 @@ Business outcome metric: Assess whether there exists a significant improvement i
    
    * Convert continuous variables to categorical variables for convenience (age) –2 points (planned for the next two weeks)
    
-   * Investigate the relationship between clients that subscribe to the term deposit and those do not and their married status, balance, previous success of previous marketing campaign, and number of contacts performed before this campaign for clients (most likely factors) –2 points (planned for the next two weeks)
-   
    * Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
    
    * Perform different dimension reduction methods to select variables that can be later used in training the predictive model –2 points (planned for the next two weeks)
@@ -209,5 +207,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTY0OTgxNDddfQ==
+eyJoaXN0b3J5IjpbLTExNzE0NDUxOTAsLTEzMTY0OTgxNDddfQ
+==
 -->
