@@ -42,7 +42,8 @@ Business outcome metric: Assess whether there exists a significant improvement i
  
    **Backlog**
    
-   * Interpret each model and s
+   * Interpret each model and select the most efficient and understandable one 
+
    * Train different models that are applicable to the data set –4 points 
    
    * Examine which metric is more appropriate to evaluate all models –2 points 
@@ -219,5 +220,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTEyOTU5ODgxLDEzNDQ4ODM1NDVdfQ==
+eyJoaXN0b3J5IjpbLTI1OTMwMzY4OF19
 -->
