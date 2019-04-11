@@ -53,10 +53,9 @@
 
 	* Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
 
-   
      * Perform different methods to see variable importance and select those for later model training if necessary  –2 points (planned for the next two weeks)
 
-    * Train different models that are applicable to the data set –4 points 
+    * Train different models that are applicable to the data set –4 points (planned for the next two weeks)
    
    * Interpret each model and select the most efficient and understandable one --2 points 
 
@@ -224,6 +223,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4OTkwMjI0LDExNDIxODI4MzcsLTI1OT
-MwMzY4OF19
+eyJoaXN0b3J5IjpbLTE5ODE1MDM5OTldfQ==
 -->
