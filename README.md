@@ -43,16 +43,7 @@
  
    **Backlog**
    
-   * Interpret each model and select the most efficient and understandable one 
-
-   * Train different models that are applicable to the data set –4 points 
-   
-   * Examine which metric is more appropriate to evaluate all models –2 points 
-   
-   * Perform different methods to see variable importance and select those for later model training if necessary  –2 points (planned for the next two weeks)
-   
    * Data preparation for different models using one hot encoding and other cleansing methods –2 points (planned for the next two weeks)
-
 
 	* Detect any correlation between parameters and consider exclusion of those highly correlated –2 points (planned for the next two weeks)
 
@@ -61,6 +52,17 @@
    * Reduce the number of classes for categorical variables (month of contact) –2 points (planned for the next two weeks)
    
    * Convert continuous variables to categorical variables for convenience (age) –2 points (planned for the next two weeks)
+   
+     * Perform different methods to see variable importance and select those for later model training if necessary  –2 points (planned for the next two weeks)
+
+    * Train different models that are applicable to the data set –4 points 
+   
+   * Interpret each model and select the most efficient and understandable one 
+
+   * Examine which metric is more appropriate to evaluate all models –2 points 
+   
+ 
+   
    
   
    
@@ -221,5 +223,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MjE4MjgzNywtMjU5MzAzNjg4XX0=
+eyJoaXN0b3J5IjpbLTE3NzA5ODk2MzMsMTE0MjE4MjgzNywtMj
+U5MzAzNjg4XX0=
 -->
