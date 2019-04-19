@@ -61,6 +61,7 @@
    * Interpret each model and select the most efficient and understandable one --2 points 
 
    * Examine which metric is more appropriate to evaluate all models –2 points 
+      
        **Icebox**
    
     * Engineer features to describe clients’ affordability
@@ -221,6 +222,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjU2NTg5NDcsMzg2ODQwMDY4LDQyND
-IzODI4OSwtMTk4MTUwMzk5OV19
+eyJoaXN0b3J5IjpbMTA4OTI2NDQ5MSwtMTE2NTY1ODk0NywzOD
+Y4NDAwNjgsNDI0MjM4Mjg5LC0xOTgxNTAzOTk5XX0=
 -->
