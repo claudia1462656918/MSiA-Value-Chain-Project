@@ -20,7 +20,7 @@
 
 ## Project Charter 
 
-**Vision**: Increase bank clients’  interest in term deposit 
+**Vision**: Evaluate bank clients’  interest in subscribing term deposit 
 
 **Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
 
@@ -215,5 +215,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk3NjgxMDI1LC0xOTgxNTAzOTk5XX0=
+eyJoaXN0b3J5IjpbNDI0MjM4Mjg5LC0xOTgxNTAzOTk5XX0=
 -->
