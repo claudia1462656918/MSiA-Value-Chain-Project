@@ -20,7 +20,7 @@
 
 ## Project Charter 
 
-**Vision**: Evaluate area of improv3ment for marketing improvements and increase bank clients’ interest in subscribing the bank's financial product 
+**Vision**: Evaluate area of improvement for marketing improvements and increase bank clients’ interest in subscribing the bank's financial product 
 
 **Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
 
@@ -86,6 +86,9 @@
 	**Icebox**
  
    * Identify the relationship between clusters and clients’ decision of subscription of the term deposit 
+  
+  **Epic**
+  Deploy the model onto AWS and develop the su prediction App. Keep track of customer retentions within the company as more customers are added.
    
 ## Data Source
 *  https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
@@ -215,6 +218,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NjY0NTQxMywzODY4NDAwNjgsNDI0Mj
+eyJoaXN0b3J5IjpbMTg1NTM0MDY4NCwzODY4NDAwNjgsNDI0Mj
 M4Mjg5LC0xOTgxNTAzOTk5XX0=
 -->
