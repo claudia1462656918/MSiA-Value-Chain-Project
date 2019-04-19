@@ -20,7 +20,7 @@
 
 ## Project Charter 
 
-**Vision**: Evaluate opportunities for marketing and product improvements and increase bank clients’ engagement in bank's marketing campaign to advertise their new financ and interest in subscribing the term deposit  
+**Vision**: Evaluate opportunities for marketing and product improvements and increase bank clients’ engagement in bank's marketing campaign to advertise their new financial products and interest in subscribing the term deposit  
 
 **Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
 
@@ -215,6 +215,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgxNDI4NTY0LDQyNDIzODI4OSwtMTk4MT
+eyJoaXN0b3J5IjpbMzg2ODQwMDY4LDQyNDIzODI4OSwtMTk4MT
 UwMzk5OV19
 -->
