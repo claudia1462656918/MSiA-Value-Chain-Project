@@ -4,6 +4,7 @@
 
 - [Project Charter](#project-charter)
 - [Project Backlog](#project-backlog)
+- [Data Source](#data-source)
 - [Repo structure](#repo-structure)
 - [Documentation](#documentation)
 - [Running the application](#running-the-application)
@@ -61,13 +62,7 @@
 
    * Examine which metric is more appropriate to evaluate all models –2 points 
    
- 
-   
-   
-  
-   
-   
-	     
+       
    
    
    **Icebox**
@@ -96,7 +91,8 @@
  
    * Identify the relationship between clusters and clients’ decision of subscription of the term deposit 
    
-
+## Data Source
+*  https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
 
 ## Repo structure 
 
