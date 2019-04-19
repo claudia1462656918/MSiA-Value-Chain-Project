@@ -88,7 +88,10 @@
    * Identify the relationship between clusters and clients’ decision of subscription of the term deposit 
   
   **Epic**
-  Deploy the model onto AWS and develop the su prediction App. Keep track of customer retentions within the company as more customers are added.
+  Deploy the model onto AWS and develop the subscription prediction App. Keep track of customer subscription in the bank as more customers are added.
+	
+
+ **Backlog**
    
 ## Data Source
 *  https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
@@ -218,6 +221,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NTM0MDY4NCwzODY4NDAwNjgsNDI0Mj
-M4Mjg5LC0xOTgxNTAzOTk5XX0=
+eyJoaXN0b3J5IjpbMjA4ODM4MzEsMzg2ODQwMDY4LDQyNDIzOD
+I4OSwtMTk4MTUwMzk5OV19
 -->
