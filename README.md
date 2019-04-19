@@ -21,7 +21,7 @@
 ## Project Charter 
 
 **Vision**: Evaluate area of improvement for bank's marketing improvements and increase bank clients’ interest in subscribing the bank's financial product 
-There is a portrugess bank that spends more than sufficimoney on marketing but does not have a satisfied result: not many clients' buy the product. 
+There is a portrugess bank that spends excessive on marketing but does not have a satisfied result: not many clients' buy the product. 
 
 **Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
 
@@ -225,7 +225,7 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0NDc2MDUwMSwtMTk1NDA5NTA4NSwtMT
-E2NTY1ODk0NywzODY4NDAwNjgsNDI0MjM4Mjg5LC0xOTgxNTAz
-OTk5XX0=
+eyJoaXN0b3J5IjpbMzE0NTQ5NzczLC0xOTU0MDk1MDg1LC0xMT
+Y1NjU4OTQ3LDM4Njg0MDA2OCw0MjQyMzgyODksLTE5ODE1MDM5
+OTldfQ==
 -->
