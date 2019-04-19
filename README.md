@@ -20,7 +20,7 @@
 
 ## Project Charter 
 
-**Vision**: Increase clients’ acceptance of the marketing campaign and their interest in term deposit 
+**Vision**: Increase bank clients’  interest in term deposit 
 
 **Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
 
@@ -61,11 +61,7 @@
    * Interpret each model and select the most efficient and understandable one --2 points 
 
    * Examine which metric is more appropriate to evaluate all models –2 points 
-   
-       
-   
-   
-   **Icebox**
+       **Icebox**
    
     * Engineer features to describe clients’ affordability
     
@@ -219,5 +215,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODE1MDM5OTldfQ==
+eyJoaXN0b3J5IjpbNzk3NjgxMDI1LC0xOTgxNTAzOTk5XX0=
 -->
