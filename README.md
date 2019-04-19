@@ -21,7 +21,7 @@
 ## Project Charter 
 
 **Vision**: Evaluate area of improvement for bank's marketing improvements and increase bank clients’ interest in subscribing the bank's financial product 
-There is a portrugess bank that spends excessive budget on marketing but does not have a satisfied result: number of bank clients who buy the product does not change significantly. In order to handle this problem, we need to evaluate the area of improvement for the bank's marketing strategy that can help ultimately increase 
+There is a portrugess bank that spends excessive budget on marketing but does not have a satisfied result; there is not a significant change in the number of bank clients who buy the product. In order to handle this problem, we need to evaluate the area of improvement for the bank's marketing strategy that can help ultimately increase 
 
 **Mission**: Drive subscription of term deposit by using data of clients and last contact of current campaign of the Portuguese bank to inform targeting decision 
 
@@ -225,7 +225,7 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU1Mjk1OTk4LDE4Mzg2NTI3ODMsLTE5NT
-QwOTUwODUsLTExNjU2NTg5NDcsMzg2ODQwMDY4LDQyNDIzODI4
-OSwtMTk4MTUwMzk5OV19
+eyJoaXN0b3J5IjpbLTE5MTQ3MDY1ODgsNzU1Mjk1OTk4LDE4Mz
+g2NTI3ODMsLTE5NTQwOTUwODUsLTExNjU2NTg5NDcsMzg2ODQw
+MDY4LDQyNDIzODI4OSwtMTk4MTUwMzk5OV19
 -->
