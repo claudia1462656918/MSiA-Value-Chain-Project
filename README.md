@@ -20,7 +20,7 @@
 
 ## Project Charter 
 
-**Vision**: There is a portrugess bank that spends excessive budget on marketing but does not have a satisfied result; there is not a significant change in the number of bank clients who buy the financial product (term deposit). In order to handle this problem, we need to evaluate the area of improvement for the bank's marketing strategy that can help ultimately increase more bank clients purchase the produce. In this way, the bank can earn more revenue
+**Vision**: This is a portrugess bank that spends excessive budget on marketing but does not have a satisfied result; there is not a significant change in the number of bank clients who buy the financial product (term deposit). In order to handle this problem, we need to evaluate the area of improvement for the bank's marketing strategy that can help ultimately increase more bank clients purchase the produce. In this way, the bank can earn more revenue
 
 **Mission**: Drive subscription of the term deposit by using data of clients and marketing strategies to inform targeting decision 
 
@@ -224,5 +224,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3NjMxMTIxMF19
+eyJoaXN0b3J5IjpbLTEzOTQyMzExOTRdfQ==
 -->
