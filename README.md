@@ -93,8 +93,8 @@
 
 	 **Backlog**
 	 * Document bank clients' subscription rate and recalculate bank subscription each trial/quarter/year as new customers are added through the app on a continuous basis. The bank might have a certain goal as to what percentage of customers it wants to buy the financial product each year. If that is not met, then the bank has to evaluate its product, customer service, or marketing campaigns to increase retention.
-	 *  load the data in s3 
-	 * set RDS for  accessing the data from the app 
+	 *  Load the data in s3 
+	 *  Set RDS for  accessing the data from the app 
    
 ## Data Source
 *  https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
@@ -224,5 +224,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NzU0MzU2OF19
+eyJoaXN0b3J5IjpbMTE3NjMxMTIxMCwxMjU3NTQzNTY4XX0=
 -->
