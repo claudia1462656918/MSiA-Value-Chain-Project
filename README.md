@@ -22,7 +22,7 @@
 
 **Vision**: There is a portrugess bank that spends excessive budget on marketing but does not have a satisfied result; there is not a significant change in the number of bank clients who buy the financial product (term deposit). In order to handle this problem, we need to evaluate the area of improvement for the bank's marketing strategy that can help ultimately increase more bank clients purchase the produce. In this way, the bank can earn more revenue
 
-**Mission**: Drive subscription of term deposit by using data of clients and marketing-stra Portuguese bank to inform targeting decision 
+**Mission**: Drive subscription of the term deposit by using data of clients and marketing strategies to inform targeting decision 
 
 **Success criteria**: 
 1) Machine learning performance metric: Use a set of metrics (accuracy score, confusion matrix, AUC) for evaluation. The minimum value for accuracy is greater than 0.89 since the breakdown of the target variable is 89:11
@@ -224,7 +224,7 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwMTM0NjEyNCwtMTkxNDcwNjU4OCw3NT
+eyJoaXN0b3J5IjpbMTI1NzU0MzU2OCwtMTkxNDcwNjU4OCw3NT
 UyOTU5OTgsMTgzODY1Mjc4MywtMTk1NDA5NTA4NSwtMTE2NTY1
 ODk0NywzODY4NDAwNjgsNDI0MjM4Mjg5LC0xOTgxNTAzOTk5XX
 0=
