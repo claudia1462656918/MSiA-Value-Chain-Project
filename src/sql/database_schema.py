@@ -1,23 +1,19 @@
 import os
 import sys
 import logging
-import logging.config
-
-import sqlalchemy as sql
-from sqlalchemy import create_engine, Column, Integer, String, Text
+import pandas as pd
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
+import sqlalchemy as sql
 
-import config
-#from helpers import create_connection, get_session
 import argparse
 
-import pandas as pd
 
-
-
-logging.config.fileConfig(config.LOGGING_CONFIG)
+logging.basicConfig(level=logging.DEBUG, filename="logfile", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
 logger = logging.getLogger('sql_db')
+
 
 Base = declarative_base()
 
@@ -114,9 +110,7 @@ if __name__ == "__main__":
     parser.add_argument("--RDS", default=False,help="True if want to create in RDS else None")
     args = parser.parse_args()
 
-    create_db(engine_string=config.SQLALCHEMY_DATABASE_URI)
-    # create engine
-    #engine = sql.create_engine(get_engine_string(RDS = False))
+    engine = create_db(args)
 
 
     # create a db session
@@ -124,9 +118,7 @@ if __name__ == "__main__":
     session = Session()
 
 
-    self.ip_time, self.age, self.job, self.marital, self.education, self.default, self.balance,
-            self.housing, self.loan, self.contact, self.day, self.month, self.campaign, self.pdays, self.previous,
-            self.poutcome, self.y
+
 
     use1 = User(ip = "11111", age=0, job =1, marital=0, education=1, default=0, balance=2000, 
     housing=0, loan=0, contact=1, day=12, month=0, campaign=2, pdays=2, previous=2, poutcome=0, y =1)
