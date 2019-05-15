@@ -102,17 +102,6 @@ def create_db(args, engine=None, engine_string=None):
 
     Base.metadata.create_all(engine)
     logging.info("database created")
-
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Create defined tables in database")
-    parser.add_argument("--RDS", default=False,help="True if want to create in RDS else None")
-    args = parser.parse_args()
-
-    engine = create_db(args)
-
-
     # create a db session
     Session = sessionmaker(bind=engine)  
     session = Session()
@@ -120,7 +109,7 @@ if __name__ == "__main__":
 
 
 
-    use1 = User(ip = "11111", age=0, job =1, marital=0, education=1, default=0, balance=2000, 
+    use1 = User(ip_time = "11111", age=0, job =1, marital=0, education=1, default=0, balance=2000, 
     housing=0, loan=0, contact=1, day=12, month=0, campaign=2, pdays=2, previous=2, poutcome=0, y =1)
     session.add(use1)
     session.commit()
@@ -131,3 +120,12 @@ if __name__ == "__main__":
     df = pd.read_sql(query, con=engine)
     logger.info(df)
     session.close()
+
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Create defined tables in database")
+    parser.add_argument("--RDS", default="False",help="True if want to create in RDS else None")
+    args = parser.parse_args()
+
+    create_db(args)
