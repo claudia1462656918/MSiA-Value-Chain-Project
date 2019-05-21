@@ -5,10 +5,7 @@ import boto3
 s3 = boto3.client("s3")
 
 def upload_data(args):
-	session = Session(aws_access_key_id=args.aws_access_key_id,
-              aws_secret_access_key=args.aws_secret_access_key)
-    s3 = session.resource('s3')
-    s3.meta.client.upload_file(args.input_file_path, args.bucket_name, args.output_file_path)
+    s3.upload_file(args.input_file_path, args.bucket_name, args.output_file_path)
 
 
 
@@ -22,5 +19,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     upload_data(args)
+
 
 
