@@ -1,4 +1,4 @@
-## Here are three files that my QA needs to look at:
+## Here are three files that my QA（Ziying Wang) needs to look at:
 
 * src/get_data.py: download data from public S3 bucket
   + file_key: bank.csv
