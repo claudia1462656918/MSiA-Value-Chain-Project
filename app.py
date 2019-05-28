@@ -108,7 +108,7 @@ def result():
 
 
 if __name__ == "__main__":
-    app.run(debug=app.config["DEBUG"])
+    app.run(debug=app.config["DEBUG"], port=app.config["PORT"], host=app.config["HOST"])
 
 
 

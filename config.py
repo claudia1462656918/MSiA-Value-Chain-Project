@@ -4,5 +4,5 @@ PORT = 3000
 APP_NAME = "penny-lane"
 SQLALCHEMY_DATABASE_URI = 'sqlite:///data/user.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
-HOST = "127.0.0.1"
+HOST = "0.0.0.0"
 MAX_ROWS_SHOW = 20
