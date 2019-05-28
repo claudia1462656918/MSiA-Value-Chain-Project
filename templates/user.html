@@ -1,0 +1,122 @@
+<html>
+<body>
+    <h3>Income Prediction Form</h3>
+
+<div>
+  <form action="/result" method="POST">
+    
+    <label for="age">Age</label>
+    <select id="age" name="age">
+      <option value="0">[0,35)</option>
+      <option value="1">[35,45]</option>
+      <option value="2">(45,100]</option>
+    </select>
+
+    <br>
+    <label for="job">Job</label>
+    <select id="job" name="job">
+      <option value="0">Unemployed</option>
+      <option value="1">Services</option>
+      <option value="2">Management</option>
+      <option value="3">Blue-Collar</option>
+      <option value="4">Self-Employed</option>
+      <option value="5">Technician</option>
+      <option value="6">Entrepreneur</option>
+      <option value="7">Admin</option>
+      <option value="8">Studennt</option>
+      <option value="9">Housemaid</option>
+      <option value="10">Retired</option>
+      <option value="11">Unknown</option>   
+    </select>
+
+
+    <br>
+    <label for="marital">Marital Status</label>
+    <select id="marital" name="marital">
+      <option value="0">Married</option>
+      <option value="1">Single</option>
+      <option value="2">Divorced</option>
+    </select>
+
+    <br>
+    <label for="education">Education</label>
+    <select id="education" name="education">
+      <option value="0">Primary</option>
+      <option value="1">Secondary</option>
+      <option value="2">Tertiary</option>
+      <option value="3">Unknown</option>
+    </select>
+    <br>
+    
+    <label for="default">Default</label>
+    <select id="default" name="default">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+
+    <label for="balance">Balance</label>
+    <input type="text" id="balance" name="balance">
+     <br>
+
+    <label for="housing">Housing</label>
+    <select id="housing" name="housing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+
+    <label for="loan">Loan</label>
+    <select id="loan" name="loan">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+
+    <label for="contact">Contact</label>
+    <select id="contact" name="contact">
+      <option value="0">Cellular</option>
+      <option value="1">Unknown</option>
+      <option value="2">Telephone</option>
+    </select>
+    <br>
+
+    <label for="day">Day </label>
+    <input type="text" id="day" name="day">btw:[0-99999]
+    <br>
+
+    <label for="month">Month</label>
+    <select id="month" name="month">
+      <option value="0">May/Jun/Jul/Aug</option>
+      <option value="1">Feb/Apr/Nov</option>
+      <option value="2">Jan/Mar/Sep/Oct/Dec</option>
+    </select>
+    <br>
+
+
+    <label for="campaign">Campaign </label>
+    <input type="text" id="campaign" name="campaign">btw:[0-99999]
+    <br>
+
+    <label for="pdays">Pdays </label>
+    <input type="text" id="pdays" name="pdays">btw:[0-99999]
+    <br>
+
+    <label for="previous">Previous</label>
+    <input type="text" id="previous" name="previous">btw:[0-9999]
+    <br>
+
+    <label for="poutcome">Poutcome</label>
+    <select id="poutcome" name="poutcome">
+      <option value="0">Unknown</option>
+      <option value="1">Failure</option>
+      <option value="2">Other</option>
+      <option value="3">Success</option>
+    </select>
+    <br>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</body>
+</html>

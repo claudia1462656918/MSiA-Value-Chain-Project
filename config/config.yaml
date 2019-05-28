@@ -1,0 +1,73 @@
+model:
+  name: customer-bank-classification
+  author: Claudia Xu
+  version: A1
+  description: a model that classifies customers into one of two types - buy and not buy
+  tags:
+    - classifier
+  dependencies: requirements.txt
+
+load_data:
+  how: load_csv
+  load_csv:
+    #path_to_data: data/sample/Churn_Modelling.csv
+    input_data_path: data/sample/bank.csv
+    columns: ['Unnamed: 0', 'age', 'job', 'marital', 'education', 'default',
+    'balance', 'housing', 'loan', 'contact', 'day', 'month', 'duration',
+    'campaign', 'pdays', 'previous', 'poutcome', 'y']
+  save_data: data/bank_data.csv
+
+# data_process:
+#   drop_irrelevant_predictors:
+#     del_column: ['Unnamed: 0', 'duration']
+#   additional_processing:
+#     column: ['job']
+
+
+
+
+generate_features:
+  get_target:
+    target: y
+  additional_processing_column: job
+  choose_features:
+    features_to_use: ['age', 'job', 'marital', 'education', 'default',
+                      'balance', 'housing', 'loan', 'contact', 'day', 'month',
+                      'campaign', 'pdays', 'previous', 'poutcome']
+    target: y
+  save_features: data/bank_processed.csv
+
+
+train_model:
+  method: xgboost
+  get_target:
+    target: y
+  split_data:
+    train_size: 0.7
+    test_size: 0.3
+    random_state: 42
+    save_split_prefix: data/bank
+  choose_features:
+    features_to_use: ['age', 'job', 'marital', 'education', 'default',
+                      'balance', 'housing', 'loan', 'contact', 'day', 'month',
+                      'campaign', 'pdays', 'previous', 'poutcome']
+  params:
+    max_depth: 3
+    n_estimators: 300
+    learning_rate: 0.05
+  save_tmo: models/bank-prediction.pkl
+
+
+score_model:
+  path_to_tmo: models/bank-prediction.pkl
+  threshold: 0.7
+  choose_features:
+    features_to_use: ['age', 'job', 'marital', 'education', 'default','balance', 'housing', 'loan', 'contact', 'day', 'month','campaign', 'pdays', 'previous', 'poutcome']
+  save_scores: models/bank-test-scores.csv
+
+evaluate_model:
+  save_evaluation: models/model-evaluation.csv
+  metrics: [auc, accuracy, f1_score]
+
+
+
