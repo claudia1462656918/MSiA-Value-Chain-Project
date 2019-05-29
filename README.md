@@ -25,7 +25,7 @@
 **Mission**: Drive subscription of the term deposit by using data of clients and marketing strategies to inform targeting decision 
 
 **Success criteria**: 
-1) Machine learning performance metric: Use a set of metrics (accuracy score, confusion matrix, AUC) for evaluation. The minimum value for accuracy is greater than 0.89 since the breakdown of the target variable is 89:11
+1) Machine learning performance metric: Use a set of metrics (accuracy score, f1, AUC) for evaluation. The minimum value for accuracy is greater than 0.89 since the breakdown of the target variable is 89:11
 
 2) Business outcome metric: The bank finds that there is an improvement in clients’ subscription rate of the term deposit 
 
