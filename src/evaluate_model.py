@@ -49,14 +49,14 @@ def evaluate_model(df_y_true, y_predicted, save_evaluation=None, **kwargs):
     # calculate other metric 
     metric = pd.DataFrame({'auc':[auc],'accuracy': [accuracy], 'f1':[f1]})
     print(metric)
-    # save to a csv if otherwise specified 
-    if save_evaluation is not None:
-        metric.to_csv(save_evaluation, index=False)
+    #save to a csv if otherwise specified 
+    # if save_evaluation is not None:
+    #     metric.to_csv(save_evaluation, index=False)
         
-        with open(save_evaluation, 'a') as f:  # Use append mode. 
-            f.write("\n")
-            confusion_df.to_csv(f)
-    return confusion_df
+    #     with open(save_evaluation, 'a') as f:  # Use append mode. 
+    #         f.write("\n")
+    #         confusion_df.to_csv(f)
+    return metric
 
 
 def run_evaluation(args):
@@ -92,6 +92,12 @@ def run_evaluation(args):
     if args.output is not None:
         confusion_df.to_csv(args.output)
         logger.info("Model evaluation saved to %s", args.output)
+    elif "evaluate_model" in config and "save_evaluation" in config["evaluate_model"]:
+        confusion_df.to_csv(config["evaluate_model"]["save_evaluation"], index=False)
+    else:
+        raise ValueError("Path to CSV for ouput data must be provided through --output or "
+                         "'evaluate_model' configuration must exist in config file")
+
         
 
 

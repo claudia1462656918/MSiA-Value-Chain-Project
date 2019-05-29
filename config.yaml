@@ -15,7 +15,7 @@ load_data:
     columns: ['Unnamed: 0', 'age', 'job', 'marital', 'education', 'default',
     'balance', 'housing', 'loan', 'contact', 'day', 'month', 'duration',
     'campaign', 'pdays', 'previous', 'poutcome', 'y']
-  save_data: data/bank_data.csv
+  save_data: data/bank-data.csv
 
 # data_process:
 #   drop_irrelevant_predictors:

@@ -1,6 +1,0 @@
-auc,accuracy,f1
-0.907817242227873,0.845367412140575,0.7022421524663678
-
-,Predicted: Negative,Predicted: Positive
-Actual: Negative,146,21
-Actual: Positive,90,56
