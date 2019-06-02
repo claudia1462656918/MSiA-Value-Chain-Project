@@ -190,27 +190,23 @@ pip install -r requirements.txt
 ```python
 DEBUG = True  # Keep True for debugging, change to False when moving to production 
 LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
-PORT = 3002  # What port to expose app on 
-SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/tracks.db'  # URI for database that contains tracks
-
+PORT = 3000  # What port to expose app on 
+SQLALCHEMY_DATABASE_URI = 'sqlite:///data/user.db'	# URI for database that contains tracks
+HOST = "0.0.0.0"
 ```
 
 
 ### 3. Initialize the database 
 
-To create the database in the location configured in `config.py` with one initial song, run: 
+To create the database in the location configured in `config.py` with one initial song,change the directory to src and run: 
 
-`python run.py create --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
-
-To add additional songs:
-
-`python run.py ingest --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
+`python database_model.py`
 
 
 ### 4. Run the application 
  
  ```bash
- python app.py 
+ python app.py
  ```
 
 ### 5. Interact with the application 
@@ -222,7 +218,7 @@ Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the cur
 Run `pytest` from the command line in the main project repository. 
 
 
-Tests exist in `test/test_helpers.py`
+Tests exist in `test/test.py`
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTEzOTQyMzExOTRdfQ==
 -->
