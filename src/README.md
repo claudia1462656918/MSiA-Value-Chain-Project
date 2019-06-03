@@ -6,7 +6,7 @@
   + save_path: output path for the downloaded data ( data/sample/bank.csv)
   
 * src/upload_data.py: upload data to your own S3 bucket
-  + source: local path for uploaded data
+  + input_file_path: local path for uploaded data
   + bucket_name: the S3 bucket name that we want to put the data to
   + output_file_path: output path for uploaded file on S3
   
