@@ -83,22 +83,19 @@ def split_data(X, y, train_size=1, test_size=0, random_state=10, save_split_pref
 
     if not include_y:
         y = dict(train=None)
-
     return X, y
 
 
 def train_model(df, method=None, save_tmo=None, **kwargs):
     """Function to train a specified model using features in given dataframe.
     Args:
-        df (:py:class:`pandas.DataFrame`): DataFrame with features.
+        df (:py:class:`pandas.DataFrame`): DataFrame excluding target variables.
         method (dict): Name of the model that we want to train.
         save_tmo (str): Trained model path to save
-        max_depth (int): Depth of a boosted tree.
-        n_estimators (int): Number of boosted trees.
-        learning_rate (int): Parameters in the xgboost to control the speed of the learning process.
-        **kwargs: Other parameters for the model we want to build.
+        **kwargs: Other parameters of the model specified in config: max_depth, n_estimators, learning_rate 
+
     Returns:
-        model ('XGBoost'): XGBoosted classification model trained.
+        model: return a xgboost model
     
     """
     
@@ -130,7 +127,6 @@ def train_model(df, method=None, save_tmo=None, **kwargs):
     
     # Instantiates a model class for the training `method` provided
     model = methods[method](**kwargs["params"])
-
     # Fit the model with the training data 
     model.fit(X["train"], y["train"])
 
@@ -150,7 +146,7 @@ def run_training(args):
             args.config (str): Path to yaml file with train_model as a top level key containing relevant configurations
             args.input (str): Optional. If given, resulting dataframe will be used in training the model
             args.output (str): Optional. If given, resulting dataframe will be saved to this location.
-    Returns: None
+    Returns: Nothing just save the model to the path given 
     """
 
     with open(args.config, "r") as f:
@@ -171,6 +167,8 @@ def run_training(args):
 
     tmo = train_model(df, **config["train_model"])
 
+    #save the model in the path specified if given
+    
     if args.output is not None:
         with open(args.output, "wb") as f:
             pickle.dump(tmo, f)

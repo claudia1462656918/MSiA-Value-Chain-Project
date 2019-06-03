@@ -8,3 +8,26 @@
 2019-05-28 12:41:41,933 INFO      * Debugger PIN: 312-994-540
 2019-05-28 12:42:43,478 INFO      * Detected change in '/Users/xulinxin/Desktop/MSiA 423 Value Chain/Project/MSiA-Value-Chain-Project/app.py', reloading
 2019-05-28 12:42:43,607 INFO      * Restarting with stat
+2019-06-02 17:31:22,243 INFO     RDS:True
+2019-06-02 17:31:22,248 DEBUG    engine string: mysql+pymysql://None:None@None:None/msia423
+2019-06-02 17:44:26,672 INFO     RDS:False
+2019-06-02 17:44:26,704 INFO     database created
+2019-06-02 17:44:26,708 INFO     Data added
+2019-06-02 17:44:26,712 INFO        id  age  job  marital  education  ...  campaign  pdays  previous  poutcome  y
+0   1    0    1        0          1  ...         2      2         2         0  1
+
+[1 rows x 17 columns]
+2019-06-02 18:25:05,547 INFO     RDS:True
+2019-06-02 18:25:05,547 DEBUG    engine string: mysql+pymysql://None:None@None:None/msia423
+2019-06-02 18:25:24,660 INFO     RDS:True
+2019-06-02 18:25:24,660 DEBUG    engine string: mysql+pymysql://None:None@None:None/msia423
+2019-06-02 18:29:14,618 INFO     RDS:False
+2019-06-02 18:29:14,627 INFO     database created
+2019-06-02 18:29:14,636 INFO     Data added
+2019-06-02 18:29:14,639 INFO        id  age  job  marital  education  ...  campaign  pdays  previous  poutcome  y
+0   1    0    1        0          1  ...         2      2         2         0  1
+1   2    0    1        0          1  ...         2      2         2         0  1
+
+[2 rows x 17 columns]
+2019-06-02 19:14:28,923 INFO     RDS:True
+2019-06-02 19:14:28,924 DEBUG    engine string: mysql+pymysql://None:None@None:None/msia423

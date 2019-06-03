@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 warnings.filterwarnings('ignore')
 
 
+
 def load_csv(input_data_path, columns):
     """Function to get data as a dataframe from a path given.
     Args:
@@ -32,12 +33,29 @@ def load_csv(input_data_path, columns):
 
     return df[columns]
 
+def load_s3(url, file_name, save_path, **kwarges):
+    """Function to download data from the s3 public bucket"""
+
+    try:
+        r = requests.get(url)
+        logger.info("Download %s from bucket url %s", file_name, url)
+        open(save_path, 'wb').write(r.content)
+    except requests.exceptions.RequestException:
+        logger.error("Error: Unable to download the file %s", file_name)
+        print('please check the name of file or the valid url or a given saved_path')
+
+
 
 def load_data(config):
     """Function to get data as a dataframe from a csv file.
     Returns:
         df (:py:class:`pandas.DataFrame`): DataFrame containing features and labels.
     """
+    if 'load_s3' in config:
+        load_s3(**config['load_s3'])
+    else: 
+        raise ValueError('No data is loaded from s3')
+
 
     how = config["how"].lower()
 
@@ -75,6 +93,7 @@ def run_loading(args):
 
     if args.save is not None:
         df.to_csv(args.save, index=False)
+    
 
         
 if __name__ == '__main__':

@@ -135,9 +135,6 @@ def convert_types(df):
 
 
 
-
-
-
 def choose_features(df, features_to_use=None, target=None, **kwargs):
     """Reduces the dataset to the features_to_use. Will keep the target if provided.
     Args:

@@ -25,37 +25,31 @@ def evaluate_model(df_y_true, y_predicted, save_evaluation=None, **kwargs):
     """
     # get predicted probability of buying the financial product of the bank 
     y_pred_prob = y_predicted.iloc[:,0]
-    # get the predicted label of class
-    y_pred = y_predicted.iloc[:,1]
-    # get true labels
-    y_true = df_y_true.iloc[:,0]
 
     # calculate auc and accuracy and f1_score if specified
-
-    if "auc" in kwargs["metrics"]:
-        auc = roc_auc_score(df_y_true, y_pred_prob)+0.2
     if "accuracy" in kwargs["metrics"]:
-        accuracy = accuracy_score(df_y_true, y_pred)+0.2
+        # second parameter is the predicted label of class y 
+        accuracy = accuracy_score(df_y_true, y_predicted.iloc[:,1])
+    if "auc" in kwargs["metrics"]:
+        # second parameter is the predicted prob of target y 
+        auc = roc_auc_score(df_y_true, y_predicted.iloc[:,0])
     if "f1_score" in kwargs["metrics"]:
-        f1 = f1_score(df_y_true, y_pred)+0.2
+        # second parameter is the predicted label of class y 
+        f1 = f1_score(df_y_true, y_predicted.iloc[:,1])
+    
        
-
     # get the confusion matrix
-    confusion = confusion_matrix(df_y_true, y_pred)
+
+    # second parameter is the predicted label of class y 
+    confusion = confusion_matrix(df_y_true, y_predicted.iloc[:,1])
     confusion_df = pd.DataFrame(confusion,index=['Actual: Negative','Actual: Positive'])
     confusion_df.columns = ['Predicted: Negative', 'Predicted: Positive']
     print(confusion_df)
     print('\n')
     # calculate other metric 
     metric = pd.DataFrame({'auc':[auc],'accuracy': [accuracy], 'f1':[f1]})
+    # verify 
     print(metric)
-    #save to a csv if otherwise specified 
-    # if save_evaluation is not None:
-    #     metric.to_csv(save_evaluation, index=False)
-        
-    #     with open(save_evaluation, 'a') as f:  # Use append mode. 
-    #         f.write("\n")
-    #         confusion_df.to_csv(f)
     return metric
 
 
@@ -72,31 +66,37 @@ def run_evaluation(args):
     with open(args.config, "r") as f:
         config = yaml.load(f)
 
-    if args.input is not None:
-        label_df = pd.read_csv(args.input)
-    elif "train_model" in config and "split_data" in config["train_model"] and "save_split_prefix" in config["train_model"]["split_data"]:
-        label_df = pd.read_csv(config["train_model"]["split_data"]["save_split_prefix"]+ "-test-targets.csv")
-        logger.info("test target loaded")
-    else:
-        raise ValueError("Path to CSV for input data must be provided through --input or "
-                         "'train_model' configuration must exist in config file")
-
     if "score_model" in config and "save_scores" in config["score_model"]:
+        logger.info("loading the predicted scores")
         score_df = pd.read_csv(config["score_model"]["save_scores"])
-        logger.info("Predicted score on test set loaded")
+        
     else:
-        raise ValueError("'score_model' configuration mush exist in config file")
+        raise ValueError("we cannot find the score_model' in config file")
+        print('please give a csv path to read or fix your config file corresponding section')
 
-    confusion_df = evaluate_model(label_df, score_df, **config["evaluate_model"])
+
+
+    if args.input is not None:
+        df = pd.read_csv(args.input)
+    elif "train_model" in config and "split_data" in config["train_model"] and "save_split_prefix" in config["train_model"]["split_data"]:
+        logger.info("load the target varaible y now")
+        df = pd.read_csv(config["train_model"]["split_data"]["save_split_prefix"]+ "-test-targets.csv")
+        print('read in y in test data')
+    else:
+        raise ValueError("There is no path to access the input data given in the --input or config file of train_model section")
+        print('please give a path to load csv')
+    
+
+    confusion_df = evaluate_model(df, score_df, **config["evaluate_model"])
     
     if args.output is not None:
         confusion_df.to_csv(args.output)
-        logger.info("Model evaluation saved to %s", args.output)
     elif "evaluate_model" in config and "save_evaluation" in config["evaluate_model"]:
-        confusion_df.to_csv(config["evaluate_model"]["save_evaluation"], index=False)
+        confusion_df.to_csv(config["evaluate_model"]["save_evaluation"])
     else:
-        raise ValueError("Path to CSV for ouput data must be provided through --output or "
-                         "'evaluate_model' configuration must exist in config file")
+        raise ValueError("We cannot find the csv path for data, neither in --output nor "
+                         "'evaluate_model' section in config file")
+        print('please give a correct input path or fix corresponding section in config file')
 
         
 

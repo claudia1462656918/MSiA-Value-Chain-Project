@@ -10,18 +10,15 @@ model:
 load_data:
   how: load_csv
   load_csv:
-    #path_to_data: data/sample/Churn_Modelling.csv
     input_data_path: data/sample/bank.csv
     columns: ['Unnamed: 0', 'age', 'job', 'marital', 'education', 'default',
     'balance', 'housing', 'loan', 'contact', 'day', 'month', 'duration',
     'campaign', 'pdays', 'previous', 'poutcome', 'y']
   save_data: data/bank_data.csv
-
-# data_process:
-#   drop_irrelevant_predictors:
-#     del_column: ['Unnamed: 0', 'duration']
-#   additional_processing:
-#     column: ['job']
+  load_s3:
+    url: https://value-chain-project-data.s3.us-east-2.amazonaws.com/bank.csv
+    file_name: bank.csv 
+    save_path: 'data/sample/bank.csv'
 
 
 
@@ -60,7 +57,7 @@ train_model:
 
 score_model:
   path_to_tmo: models/bank-prediction.pkl
-  threshold: 0.7
+  cutoff: 0.5
   choose_features:
     features_to_use: ['age', 'job', 'marital', 'education', 'default','balance', 'housing', 'loan', 'contact', 'day', 'month','campaign', 'pdays', 'previous', 'poutcome']
   save_scores: models/bank-test-scores.csv

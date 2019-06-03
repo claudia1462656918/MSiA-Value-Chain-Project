@@ -16,7 +16,7 @@ features: data/bank_processed.csv
 
 models/bank-prediction.pkl: data/bank_processed.csv src/train_model.py
 	python src/train_model.py --config=config/config.yaml --input=data/bank_processed.csv --output=models/bank-prediction.pkl
-trained-model: models/bank-prediction.pkl
+train: models/bank-prediction.pkl
 
 
 models/bank_test_scores.csv: src/score_model.py
@@ -28,13 +28,7 @@ models/model_evaluation.csv: src/evaluate_model.py
 evaluation: models/model_evaluation.csv
 
 
-# Create the database
-#data/churn.db:
-#	python run.py create
 
-#database: data/churn.db
-
-# Pull raw data from github
 get_data:
 	python src/import_data.py
 
@@ -56,4 +50,6 @@ clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
 	rm -rf .pytest_cache
 
-clean: clean-env clean-pyc
+clean: clean-tests clean-env clean-pyc
+
+all: features train scores evaluation 

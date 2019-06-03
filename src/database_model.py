@@ -6,7 +6,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy as sql
-
 import argparse
 
 
@@ -20,7 +19,7 @@ Base = declarative_base()
 
 # ADD CLASS FOR  USER TABLE HERE
 class User(Base):
-    """ Defines the data model for the table `tweetscore`. """
+    """ Defines the data model for the table `user`. """
 
     __tablename__ = 'user'
 
@@ -41,10 +40,7 @@ class User(Base):
     previous = Column(Integer, unique=False, nullable=False)
     poutcome = Column(Integer, unique=False, nullable=False)
     y = Column(Integer, unique=False, nullable=False)
-    # user_input = Column(Integer, unique=False, nullable=False)
-    # user_output = Column(Integer, unique=False, nullable=False)
-    # user_feedback = Column(String(100), unique=False, nullable=False)
-    
+   
 
     # def __repr__(self):
     #     user_repr = "<User(ip_time='%s', age = '%d', job = '%d', marital='%d',education='%d',default='%d',balance='%d',housing='%d',loan='%d',contact='%d',day='%d',month='%d',campaign='%d',pdays='%d',previous='%d',poutcome='%d',y='%d')>"
@@ -56,6 +52,7 @@ class User(Base):
 
 
 def get_engine_string(RDS = False):
+    """The function is used to have the engine path of the database"""
     if RDS:
         conn_type = "mysql+pymysql"
         user = os.environ.get("MYSQL_USER")
@@ -82,9 +79,8 @@ def create_db(args, engine=None, engine_string=None):
         engine_string (`str`, default None): String defining SQLAlchemy connection URI in the form of
             `dialect+driver://username:password@host:port/database`. If None, `engine` must be provided.
     Returns:
-        None
+        engine
     """
-
 
     if engine is None:
         RDS = eval(args.RDS) # evaluate string to bool
@@ -94,24 +90,7 @@ def create_db(args, engine=None, engine_string=None):
     Base.metadata.create_all(engine)
     logging.info("database created")
     return engine
-    # create a db session
-    # Session = sessionmaker(bind=engine)  
-    # session = Session()
-
-
-
-
-    # use1 = User(age=0, job =1, marital=0, education=1, default=0, balance=2000, 
-    # housing=0, loan=0, contact=1, day=12, month=0, campaign=2, pdays=2, previous=2, poutcome=0, y =1)
-    # session.add(use1)
-    # session.commit()
-
-    # logger.info("Data added")
-
-    # query = "SELECT * FROM user"
-    # df = pd.read_sql(query, con=engine)
-    # logger.info(df)
-    # session.close()
+    
 
 
 
