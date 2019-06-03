@@ -185,44 +185,53 @@ pip install -r requirements.txt
 
 ### 2. Configure Flask app 
 
-`config.py` holds the configurations for the Flask app. It includes the following configurations:
+`config.py` holds the configurations for the Flask app. It includes the following configurations, change the last line if run on RDS (more details in section 4):
 
 ```python
 DEBUG = True  # Keep True for debugging, change to False when moving to production 
-LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
-PORT = 3002  # What port to expose app on 
-SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/tracks.db'  # URI for database that contains tracks
+LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures python logger
+PORT = 3000  # What port to expose app on 
+SQLALCHEMY_DATABASE_URI = 'sqlite:////data/user.db'  # URI for database that contains tracks
 
 ```
 
 
 ### 3. Initialize the database 
 
-To create the database in the location configured in `config.py` with one initial song, run: 
+To create the database in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
 
-`python run.py create --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
+`cd path_to_repository/src`
 
-To add additional songs:
+`python models.py`
 
-`python run.py ingest --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
 
 
 ### 4. Run the application 
- 
+
+To run the application locally, use the following code in config.py:
+
+ `SQLALCHEMY_DATABASE_URI='sqlite:///data/user.db` 
+
+To run the application on RDS, use the following code in config.py:
+
+`SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, DATABASE_NAME)`
+
+After adopting corresponding changes, run
+
  ```bash
  python app.py 
  ```
 
 ### 5. Interact with the application 
 
-Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of hte app. 
+Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of the app. 
 
 ## Testing 
 
-Run `pytest` from the command line in the main project repository. 
+Run `make test` from the command line in the main project repository. 
 
 
-Tests exist in `test/test_helpers.py`
+Tests exist in `test/test.py`
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTEzOTQyMzExOTRdfQ==
 -->

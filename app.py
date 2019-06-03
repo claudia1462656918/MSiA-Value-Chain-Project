@@ -65,11 +65,16 @@ def ValuePredictor(to_predict_list):
     """
 
     to_predict = np.array(to_predict_list).reshape(1,15)
-    loaded_model = pickle.load(open("models/bank-prediction.pkl","rb"))
+    model_path = app.config['MODEL_PATH']
+    loaded_model = pickle.load(open(model_path,"rb"))
+    #loaded_model = pickle.load(open("models/bank-prediction.pkl","rb"))
     features_columns = ['age', 'job', 'marital', 'education', 'default', 'balance', 'housing','loan', 'contact', 'day', 'month', 'campaign', 'pdays', 'previous','poutcome']
     new_df = pd.DataFrame(to_predict, columns = features_columns)
     result = loaded_model.predict(new_df)
-    return result[0]
+    prob = loaded_model.predict_proba(new_df)
+    
+    prob_class = [prob[0][1],result[0]]
+    return prob_class
 
 
 @app.route('/result',methods = ['POST'])
@@ -86,10 +91,14 @@ def result():
             result = ValuePredictor(to_predict_list)
          
             # tell the user about the prediction result 
-            if int(result)==1:
+            if int(result[1])==1:
                 prediction='Woo-hoo, the customer will try the new product!'
             else:
                 prediction='Opps, the customer decides to save some money.'
+
+            prob = 'Predicted Purchase Probability: '+str(result[0])
+            print(prob)
+            print('********')
 
             # convert all user input to integer to be put into the user database as required
             Age = int(request.form['age'])
@@ -109,23 +118,30 @@ def result():
             Poutcome = int(request.form['poutcome'])
 
 
+
+
+
+            # fill out the row for the user table 
             customer1 = User(age=Age, job =Job, marital=Marital, education=Education, 
                 default=Default, balance=Balance, housing=Housing, loan=Loan, 
                 contact=Contact, day=Day, month=Month, campaign=Campaign, pdays=Pdays, 
-                previous=Previous, poutcome=Poutcome, y =int(result))
+                previous=Previous, poutcome=Poutcome, y =int(result[1]))
 
+            # add the new customer to the user database
             db.session.add(customer1)
             db.session.commit()
 
 
-            return render_template("result.html",prediction=prediction, prob = result)
+            return render_template("result.html",prediction=prediction, prob = prob)
     except:
+        # if the user input is incomplete, then direct to the error page.
         logger.warning("At least one user input not been filled")
         return render_template("error.html")
 
 
 @app.route("/error")
 def error():
+    """Error page when at least one user input has missing value. This can lead back to the prediction page"""
     return render_template('error.html', title='error')
 
 

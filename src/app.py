@@ -54,7 +54,9 @@ def advice():
 def ValuePredictor(to_predict_list):
 
     to_predict = np.array(to_predict_list).reshape(1,15)
-    loaded_model = pickle.load(open("models/bank-prediction.pkl","rb"))
+    model_path = app.config['Model_Path']
+    loaded_model = pickle.load(open(model_path,"rb"))
+    #loaded_model = pickle.load(open("models/bank-prediction.pkl","rb"))
     features_columns = ['age', 'job', 'marital', 'education', 'default', 'balance', 'housing','loan', 'contact', 'day', 'month', 'campaign', 'pdays', 'previous','poutcome']
     new_df = pd.DataFrame(to_predict, columns = features_columns)
     result = loaded_model.predict(new_df)
