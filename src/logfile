@@ -1,0 +1,8 @@
+2019-06-03 15:49:22,920 INFO     RDS:False
+2019-06-03 15:51:22,350 INFO     RDS:False
+2019-06-03 15:51:22,364 INFO     database created
+2019-06-03 15:51:22,368 INFO     Data added
+2019-06-03 15:51:22,371 INFO        id  age  job  marital  education ...  campaign  pdays  previous  poutcome  y
+0   1    0    1        0          1 ...         2      2         2         0  1
+
+[1 rows x 17 columns]

@@ -1,5 +1,3 @@
-
-
 import argparse
 import boto3
 s3 = boto3.client("s3")
@@ -19,6 +17,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     upload_data(args)
-
 
 

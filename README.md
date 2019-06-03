@@ -105,46 +105,39 @@
 ├── README.md                         <- You are here
 │
 ├── app
-│   ├── static/                       <- CSS, JS files that remain static 
-│   ├── templates/                    <- HTML (or other code) that is templated and changes based on a set of inputs
-│   ├── models.py                     <- Creates the data model for the database connected to the Flask app 
-│   ├── __init__.py                   <- Initializes the Flask app and database connection
+├── static/                       <- CSS, JS files that remain static 
+├──templates/                    <- HTML (or other code) that is templated and changes based on a set of inputs
 │
 ├── config                            <- Directory for yaml configuration files for model training, scoring, etc
 │   ├── logging/                      <- Configuration files for python loggers
 │
 ├── data                              <- Folder that contains data used or generated. Only the external/ and sample/ subdirectories are tracked by git. 
-│   ├── archive/                      <- Place to put archive data is no longer usabled. Not synced with git. 
-│   ├── external/                     <- External data sources, will be synced with git
 │   ├── sample/                       <- Sample data used for code development and testing, will be synced with git
 │
 ├── docs                              <- A default Sphinx project; see sphinx-doc.org for details.
 │
-├── figures                           <- Generated graphics and figures to be used in reporting.
-│
 ├── models                            <- Trained model objects (TMOs), model predictions, and/or model summaries
-│   ├── archive                       <- No longer current models. This directory is included in the .gitignore and is not tracked by git
 │
 ├── notebooks
 │   ├── develop                       <- Current notebooks being used in development.
 │   ├── deliver                       <- Notebooks shared with others. 
 │   ├── archive                       <- Develop notebooks no longer being used.
-│   ├── template.ipynb                <- Template notebook for analysis with useful imports and helper functions. 
 │
 ├── src                               <- Source data for the project 
-│   ├── archive/                      <- No longer current scripts.
 │   ├── helpers/                      <- Helper scripts used in main src files 
 │   ├── sql/                          <- SQL source code
-│   ├── add_songs.py                  <- Script for creating a (temporary) MySQL database and adding songs to it 
-│   ├── ingest_data.py                <- Script for ingesting data from different sources 
+│   ├── get_data.py                   <- Script for downloading data from the public s3 bucket
+│   ├── upload_data.py                <- Script for uploading data files to s3 bucket. 
+│   ├── load_data.py                  <- Script for loading data to the path specified 
 │   ├── generate_features.py          <- Script for cleaning and transforming data and generating features used for use in training and scoring.
 │   ├── train_model.py                <- Script for training machine learning model(s)
 │   ├── score_model.py                <- Script for scoring new predictions using a trained model.
-│   ├── postprocess.py                <- Script for postprocessing predictions and model results
 │   ├── evaluate_model.py             <- Script for evaluating model performance 
+│   ├── model.py             	      <- Script for creating database model that is later connected to the Flask app.
+│   ├── README.md                     <- Documentation with instructions to run scripts in src/ and midproject check.
 │
 ├── test                              <- Files necessary for running model tests (see documentation below) 
-
+│   ├── test.py                       <- Script for running unit tests on functions in src/.
 ├── run.py                            <- Simplifies the execution of one or more of the src scripts 
 ├── app.py                            <- Flask wrapper for running the model 
 ├── config.py                         <- Configuration file for Flask app
@@ -160,7 +153,7 @@ This project structure was partially influenced by the [Cookiecutter Data Scienc
 ## Running the application 
 ### 1. Set up environment 
 
-The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+The `requirements.txt` file contains the packages required to run the model code. We need to change the path to the main repository before installing the requirement.txt. An environment can be set up in two ways. 
 
 #### With `virtualenv`
 
@@ -177,48 +170,86 @@ pip install -r requirements.txt
 #### With `conda`
 
 ```bash
-conda create -n pennylane python=3.7
-conda activate pennylane
+conda create -n avc python=3.7
+conda activate avc
 pip install -r requirements.txt
 
 ```
 
 ### 2. Configure Flask app 
 
-`config.py` holds the configurations for the Flask app. It includes the following configurations:
+`config.py` holds the configurations for the Flask app. It includes the following configurations, change the last line if run on RDS (more details in section 4):
 
 ```python
 DEBUG = True  # Keep True for debugging, change to False when moving to production 
-LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
+LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures python logger
 PORT = 3000  # What port to expose app on 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///data/user.db'	# URI for database that contains tracks
-HOST = "0.0.0.0"
+SQLALCHEMY_DATABASE_URI = 'sqlite:////data/user.db'  # URI for database that contains tracks
+
 ```
 
 
 ### 3. Initialize the database 
 
-To create the database in the location configured in `config.py` with one initial song,change the directory to src and run: 
+To create the database locally in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
 
-`python database_model.py`
+`cd path_to_repository/src`
+
+`python models.py`
+
+
+To create the database on RDS in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
+
+`cd path_to_repository/src`
+
+`python models.py --RDS True`
+
+
 
 
 ### 4. Run the application 
- 
+
+To run the application locally, use the following code in config.py:
+
+ `SQLALCHEMY_DATABASE_URI='sqlite:///data/user.db` 
+
+To run the application on RDS, unncomment following chunk of code. Make sure you comment the above line because we already have the last line to find the database in RDS. 
+
+```python
+import os
+conn_type = "mysql+pymysql"
+user = os.environ.get("MYSQL_USER")
+password = os.environ.get("MYSQL_PASSWORD")
+host = os.environ.get("MYSQL_HOST")
+port = os.environ.get("MYSQL_PORT")
+DATABASE_NAME = 'msia423'
+SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, DATABASE_NAME)
+```
+
+Change the existing code to the following: 
+```python
+HOST = '0.0.0.0'
+```
+
+After adopting corresponding changes, run
+
  ```bash
- python app.py
+ cd path_to_repository
+ python app.py 
+
  ```
 
 ### 5. Interact with the application 
 
-Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of hte app. 
+Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of the app. 
 
 ## Testing 
 
-Run `pytest` from the command line in the main project repository. 
+Run `make test` from the command line in the main project repository. 
 
 
 Tests exist in `test/test.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MjI1NTQwMywtMTM5NDIzMTE5NF19
+eyJoaXN0b3J5IjpbLTEzOTQyMzExOTRdfQ==
 -->
+

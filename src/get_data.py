@@ -1,19 +1,34 @@
-
+import requests
 import argparse
-import boto3
-s3 = boto3.client("s3")
+import logging
+
+logger = logging.getLogger(__name__)
 
 def download_data(args):
-    s3.download_file(args.bucket_name, args.file_key, args.output_file_path)
+    """
+    Downloads data from given public bucket url to the local folder given the path
+    
+    :param sourceurl (str): url of the stored data in s3 bucket
+    :param filename (str): name of the target file
+    :param savename (str): save path of the file
 
+    Return: None
+    """
+    try:
+        r = requests.get(args.sourceurl)
+        logger.info("Download %s from bucket %s", args.filename, args.sourceurl)
+        open(args.savename, 'wb').write(r.content)
+    except requests.exceptions.RequestException:
+        logger.error("Error: Unable to download file %s", args.filename)
 
 if __name__ == "__main__":
+    #download data from the source
     parser = argparse.ArgumentParser(description="Download data from S3")
 
-    # add argument
-    parser.add_argument("--file_key", help="Name of the file in S3 that you want to download")
-    parser.add_argument("--bucket_name", help="s3 bucket name")
-    parser.add_argument("--output_file_path", help="output path for downloaded file")
+    parser.add_argument("--sourceurl", help="Target S3 bucket name url")
+    parser.add_argument("--filename", help="Target file want to dowlaod")
+    parser.add_argument("--savename", help="Filename to be save")
 
     args = parser.parse_args()
     download_data(args)
+
