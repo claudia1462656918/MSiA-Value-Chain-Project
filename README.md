@@ -160,7 +160,7 @@ This project structure was partially influenced by the [Cookiecutter Data Scienc
 ## Running the application 
 ### 1. Set up environment 
 
-The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+The `requirements.txt` file contains the packages required to run the model code. We need to change the path to the main repository before installing the requirement.txt. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
 
 #### With `virtualenv`
 
@@ -198,11 +198,18 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:////data/user.db'  # URI for database that con
 
 ### 3. Initialize the database 
 
-To create the database in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
+To create the database locally in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
 
 `cd path_to_repository/src`
 
 `python models.py`
+
+
+To create the database on RDS in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
+
+`cd path_to_repository/src`
+
+`python models.py --RDS True`
 
 
 
@@ -212,7 +219,7 @@ To run the application locally, use the following code in config.py:
 
  `SQLALCHEMY_DATABASE_URI='sqlite:///data/user.db` 
 
-To run the application on RDS, unncomment following chunk of code
+To run the application on RDS, unncomment following chunk of code. Make sure you comment the above line because we already have the last line to find the database in RDS. 
 
 ```python
 import os
@@ -227,7 +234,7 @@ SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password
 
 Change the existing code to the following: 
 ```python
-HOST = 0.0.0.0
+HOST = '0.0.0.0'
 ```
 
 After adopting corresponding changes, run
