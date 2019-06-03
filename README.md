@@ -212,23 +212,28 @@ To run the application locally, use the following code in config.py:
 
  `SQLALCHEMY_DATABASE_URI='sqlite:///data/user.db` 
 
-To run the application on RDS, unncomment following chunk of code and change the HOST=0.0.0.0:
+To run the application on RDS, unncomment following chunk of code
 
 ```python
-# import os
-# conn_type = "mysql+pymysql"
-# user = os.environ.get("MYSQL_USER")
-# password = os.environ.get("MYSQL_PASSWORD")
-# host = os.environ.get("MYSQL_HOST")
-# port = os.environ.get("MYSQL_PORT")
-# DATABASE_NAME = 'msia423'
-# SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, DATABASE_NAME)
+import os
+conn_type = "mysql+pymysql"
+user = os.environ.get("MYSQL_USER")
+password = os.environ.get("MYSQL_PASSWORD")
+host = os.environ.get("MYSQL_HOST")
+port = os.environ.get("MYSQL_PORT")
+DATABASE_NAME = 'msia423'
+SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, DATABASE_NAME)
 ```
 
+Change the existing code to the following: 
+```python
+HOST = 0.0.0.0
+```
 
 After adopting corresponding changes, run
 
  ```bash
+ cd path_to_repository
  python app.py 
  ```
 
