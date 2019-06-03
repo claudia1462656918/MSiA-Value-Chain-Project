@@ -177,8 +177,8 @@ pip install -r requirements.txt
 #### With `conda`
 
 ```bash
-conda create -n pennylane python=3.7
-conda activate pennylane
+conda create -n avc python=3.7
+conda activate avc
 pip install -r requirements.txt
 
 ```
