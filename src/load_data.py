@@ -95,13 +95,3 @@ def run_loading(args):
         df.to_csv(args.save, index=False)
     
 
-        
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="")
-    parser.add_argument('--config', help='yaml file path with configurations')
-    parser.add_argument('--save', default=None, 
-                        help='Path to where the dataset should be saved to ifspecified')
-
-    args = parser.parse_args()
-
-    run_loading(args)

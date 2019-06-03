@@ -42,12 +42,7 @@ class User(Base):
     y = Column(Integer, unique=False, nullable=False)
    
 
-    # def __repr__(self):
-    #     user_repr = "<User(ip_time='%s', age = '%d', job = '%d', marital='%d',education='%d',default='%d',balance='%d',housing='%d',loan='%d',contact='%d',day='%d',month='%d',campaign='%d',pdays='%d',previous='%d',poutcome='%d',y='%d')>"
-    #     return user_repr % (self.ip_time, self.age, self.job, self.marital, self.education, self.default, self.balance,
-    #         self.housing, self.loan, self.contact, self.day, self.month, self.campaign, self.pdays, self.previous,
-    #         self.poutcome, self.y)
-
+  
 
 
 
@@ -66,7 +61,7 @@ def get_engine_string(RDS = False):
         logging.debug("engine string: %s"%engine_string)
         return  engine_string
     else:
-        return 'sqlite:///user.db' # relative path
+        return 'sqlite:///../data/user.db' # relative path
 
 
 
@@ -103,14 +98,17 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)  
     session = Session()
 
+    # create one user instance with specific input given 
     use1 = User(age=0, job =1, marital=0, education=1, default=0, balance=2000, 
     housing=0, loan=0, contact=1, day=12, month=0, campaign=2, pdays=2, previous=2, poutcome=0, y =1)
+    
+    # add the user1 to our database
     session.add(use1)
     session.commit()
 
-
     logger.info("Data added")
 
+    # select to see all data in our database user 
     query = "SELECT * FROM user"
     df = pd.read_sql(query, con=engine)
     logger.info(df)

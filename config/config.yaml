@@ -18,7 +18,7 @@ load_data:
   load_s3:
     url: https://value-chain-project-data.s3.us-east-2.amazonaws.com/bank.csv
     file_name: bank.csv 
-    save_path: 'data/sample/bank.csv'
+    save_path: data/sample/bank.csv
 
 
 

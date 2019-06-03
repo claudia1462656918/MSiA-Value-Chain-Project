@@ -10,31 +10,33 @@ venv: pennylane-env/bin/activate
 
 # Below are for reproducing feature generation, modeling, scoring, evaluation and post-process
 data/bank_processed.csv: src/generate_features.py 
-	python src/generate_features.py --config=config/config.yaml --output=data/bank_processed.csv
+	python run.py generate_features --config=config/config.yaml --output=data/bank_processed.csv
 features: data/bank_processed.csv
 
 
 models/bank-prediction.pkl: data/bank_processed.csv src/train_model.py
-	python src/train_model.py --config=config/config.yaml --input=data/bank_processed.csv --output=models/bank-prediction.pkl
+	python run.py train_model --config=config/config.yaml --input=data/bank_processed.csv --output=models/bank-prediction.pkl
 train: models/bank-prediction.pkl
 
 
 models/bank_test_scores.csv: src/score_model.py
-	python src/score_model.py --config=config/config.yaml
+	python run.py score_model --config=config/config.yaml
 scores: models/bank_test_scores.csv
 
 models/model_evaluation.csv: src/evaluate_model.py
-	python src/evaluate_model.py --config=config/config.yaml --output=models/model_evaluation.csv
+	python run.py evaluate_model --config=config/config.yaml --output=models/model_evaluation.csv
 evaluation: models/model_evaluation.csv
 
 
 
-get_data:
-	python src/import_data.py
+data/sample/bank.csv: src/get_data.py
+	python run.py get_data --sourceurl=https://value-chain-project-data.s3.us-east-2.amazonaws.com/bank.csv --filename=bank.csv  --savename=data/sample/bank.csv
+get_s3_data: data/sample/bank.csv
+
 
 # Run all tests
 test:
-	pytest src/test.py
+	pytest test/test.py
 
 # Clean up things
 clean-tests:

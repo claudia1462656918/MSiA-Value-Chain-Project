@@ -63,6 +63,7 @@ def run_evaluation(args):
     Returns: None
     """
 
+    # load the section of evaulation in the config file 
     with open(args.config, "r") as f:
         config = yaml.load(f)
 
@@ -75,7 +76,7 @@ def run_evaluation(args):
         print('please give a csv path to read or fix your config file corresponding section')
 
 
-
+    # read the input file here 
     if args.input is not None:
         df = pd.read_csv(args.input)
     elif "train_model" in config and "split_data" in config["train_model"] and "save_split_prefix" in config["train_model"]["split_data"]:
@@ -86,7 +87,7 @@ def run_evaluation(args):
         raise ValueError("There is no path to access the input data given in the --input or config file of train_model section")
         print('please give a path to load csv')
     
-
+    # generate the result metric calling the function 
     confusion_df = evaluate_model(df, score_df, **config["evaluate_model"])
     
     if args.output is not None:
@@ -99,15 +100,4 @@ def run_evaluation(args):
         print('please give a correct input path or fix corresponding section in config file')
 
         
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Evaluate Model")
-    parser.add_argument('--config', '-c', help='path to yaml file with configurations')
-    parser.add_argument('--input', '-i', default=None, help="Path to CSV for input to model evaluation")
-    parser.add_argument('--output', '-o', default=None, help='Path to where the metrics should be saved to (optional)')
-
-    args = parser.parse_args()
-
-    run_evaluation(args)
 

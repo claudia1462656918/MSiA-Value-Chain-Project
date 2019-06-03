@@ -5,11 +5,12 @@ This module includes unit tests for two important functions in data_process_help
 
 import pandas as pd
 import numpy as np
-import src.generate_features as gf
-import train_model as tm
-import score_model as sm 
-import evaluate_model as em
 import xgboost as xgb
+import src.generate_features as gf
+import src.train_model as tm
+import src.score_model as sm 
+import src.evaluate_model as em
+
 
 
 
@@ -53,7 +54,7 @@ def test_additional_processing():
     df_testing = pd.DataFrame(data=df_inputs)
 
     # actual output
-    actual = gf.additional_processing(df_testing)
+    actual = gf.additional_processing(df_testing,'job')
 
     # expected output
     df_expected = {
@@ -258,7 +259,7 @@ def test_evaluate_model():
 def test_train_model():
     """test if output of train_model function is an instance of xgboost model class"""
     
-    df = pd.read_csv('../data/bank_processed.csv')
+    df = pd.read_csv('data/bank_processed.csv')
     method = 'xgboost'
 
     kwargs = {'params':{"max_depth":3, 'n_estimators': 300,'learning_rate': 0.05},
@@ -286,8 +287,8 @@ def test_train_model():
 def test_score_model():
     """test the function of score_model whether it gives correct probability between [0,1]"""
     
-    df = pd.read_csv('../data/bank_processed.csv')
-    path_to_tmo = '../models/bank-prediction.pkl'
+    df = pd.read_csv('data/bank_processed.csv')
+    path_to_tmo = 'models/bank-prediction.pkl'
     cutoff = 0.5
     
     kwargs = {"choose_features": {'features_to_use': 

@@ -11,10 +11,11 @@ import pickle
 import sklearn
 import pandas as pd
 import numpy as np
-
-from load_data import load_data
-from generate_features import choose_features, get_target
 import xgboost as xgb
+
+from src.load_data import load_data
+from src.generate_features import choose_features, get_target
+
 
 logger = logging.getLogger(__name__)
 
@@ -42,20 +43,16 @@ def score_model(df, path_to_tmo, cutoff, save_scores=None, **kwargs):
     else:
         X = df
 
-    # features_columns = ['age', 'job', 'marital', 'education', 'default', 'balance', 'housing','loan', 'contact', 'day', 'month', 'campaign', 'pdays', 'previous','poutcome']
-    # new_df = pd.DataFrame(X, columns = features_columns)
-    #result = loaded_model.predict(new_df)
+   
     # just get the probability of customers buying the product, initially 2 columns, one is for not buy, one is for buy 
     y_prob_yes = model.predict_proba(X)[:,1]
-
-    #print(model.predict_proba(X))
     y_pred = pd.DataFrame(y_prob_yes)
+    
     # name the probability column of the class who does want to buy the product  
     y_pred.columns = ['pred_prob']
     # add a new column that convert the probability to the class label using the helper function 
     y_pred['pred'] = [1 if i>cutoff else 0 for i in y_prob_yes]
 
-    #print(len(y_pred.columns))
     
     if len(y_pred.columns) == 2:
             logger.info("The following columns are included in scores: %s", ",".join(y_pred.columns))
@@ -97,14 +94,3 @@ def run_scoring(args):
 
         
         
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Score model")
-    parser.add_argument('--config', '-c', help='path to yaml file with configurations')
-    parser.add_argument('--input', '-i', default=None, help="Path to CSV for input to model scoring")
-    parser.add_argument('--output', '-o', default=None, help='Path to where the scores should be saved to (optional)')
-
-    args = parser.parse_args()
-
-    run_scoring(args)

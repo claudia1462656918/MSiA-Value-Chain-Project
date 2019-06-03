@@ -12,7 +12,7 @@ from app import db, app
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from src.database_model import User
+from src.model import User
 
 # Initialize the Flask application
 app = Flask(__name__)

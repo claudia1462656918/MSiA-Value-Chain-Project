@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.utils import resample
 import numpy as np
-from load_data import load_data
+from src.load_data import load_data
 import logging
 import argparse
 import yaml
@@ -84,6 +84,7 @@ def reduce_no_of_class(df):
         df (pandas.DataFrame object): data frame that has variable of month with 3 classes and age with 3 classes 
     """
     
+    # classify month into 3 categories based on frequency count
     j = 0    
     for i in df['month']:
         if (i in ('may','jun','jul','aug')):
@@ -94,9 +95,11 @@ def reduce_no_of_class(df):
             df.iloc[j,10] = 'low'
         j = j+1
     
+    # calculate the quantile of the age 
     c1 = df['age'].quantile(1/3)
     c2 = df['age'].quantile(2/3)
 
+    # divide the age into 3 classes based on quantile 
     j = 0
     for i in df['age']:
         if (i < c1):
@@ -170,10 +173,11 @@ def choose_features(df, features_to_use=None, target=None, **kwargs):
 
 
 
-def run_data_process(args):
+def run_features(args):
     with open(args.config, "r") as f:
         config = yaml.load(f)
 
+    # read the data file if given or using load_data function
     if args.input is not None:
         df = pd.read_csv(args.input)
     elif "load_data" in config:
@@ -182,7 +186,7 @@ def run_data_process(args):
         raise ValueError("Path to CSV for input data must be provided through --csv or "
                          "'load_data' configuration must exist in config file")
         
-        
+    # perform all data processing    
     df = additional_processing(df, **config["generate_features"])
     df = balance_class(df)
     df = reduce_no_of_class(df)
@@ -195,16 +199,6 @@ def run_data_process(args):
 
     return df
 
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Data Process")
-    parser.add_argument('--config', help='path to yaml file with configurations')
-    parser.add_argument('--input', default=None, help="Path to CSV for processing data from")
-    parser.add_argument('--output', default=None, help="Path to CSV for processing data to")
-
-    args = parser.parse_args()
-
-    run_data_process(args)
 
 
 
