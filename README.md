@@ -220,5 +220,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTQyMzExOTRdfQ==
+eyJoaXN0b3J5IjpbLTg5MjI1NTQwMywtMTM5NDIzMTE5NF19
 -->
