@@ -74,51 +74,59 @@ def ValuePredictor(to_predict_list):
 
 @app.route('/result',methods = ['POST'])
 def result():
-    if request.method == 'POST':
+    """Prediction page of our app, return to the error page if any of input is not given 
+
+    Returns: rendered prediction html template
+    """
+    try:
+        if request.method == 'POST':
+            to_predict_list = request.form.to_dict()
+            to_predict_list=list(to_predict_list.values())
+            to_predict_list = list(map(int, to_predict_list)) 
+            result = ValuePredictor(to_predict_list)
+         
+            # tell the user about the prediction result 
+            if int(result)==1:
+                prediction='Woo-hoo, the customer will try the new product!'
+            else:
+                prediction='Opps, the customer decides to save some money.'
+
+            # convert all user input to integer to be put into the user database as required
+            Age = int(request.form['age'])
+            Job = int(request.form['job'])
+            Marital = int(request.form['marital'])
+            Education = int(request.form['education'])
+            Default = int(request.form['default'])
+            Balance = int(request.form['balance'])
+            Housing = int(request.form['housing'])
+            Loan = int(request.form['loan'])
+            Contact = int(request.form['contact'])
+            Day = int(request.form['day'])
+            Month = int(request.form['month'])
+            Campaign = int(request.form['campaign'])
+            Pdays = int(request.form['pdays'])
+            Previous = int(request.form['previous'])
+            Poutcome = int(request.form['poutcome'])
 
 
-        to_predict_list = request.form.to_dict()
-        to_predict_list=list(to_predict_list.values())
-        to_predict_list = list(map(int, to_predict_list)) 
-        result = ValuePredictor(to_predict_list)
-        print('***********')
-        print(result)
-        print(to_predict_list)
+            customer1 = User(age=Age, job =Job, marital=Marital, education=Education, 
+                default=Default, balance=Balance, housing=Housing, loan=Loan, 
+                contact=Contact, day=Day, month=Month, campaign=Campaign, pdays=Pdays, 
+                previous=Previous, poutcome=Poutcome, y =int(result))
 
-        if int(result)==1:
-            prediction='🎉 Woo-hoo, the customer will try the new product 🎉'
-        else:
-            prediction='😢 Opps, the customer decides to save some money 😢'
+            db.session.add(customer1)
+            db.session.commit()
 
 
-        Age = int(request.form['age'])
-        Job = int(request.form['job'])
-        Marital = int(request.form['marital'])
-        Education = int(request.form['education'])
-        Default = int(request.form['default'])
-        Balance = int(request.form['balance'])
-        Housing = int(request.form['housing'])
-        Loan = int(request.form['loan'])
-        Contact = int(request.form['contact'])
-        Day = int(request.form['day'])
-        Month = int(request.form['month'])
-        Campaign = int(request.form['campaign'])
-        Pdays = int(request.form['pdays'])
-        Previous = int(request.form['previous'])
-        Poutcome = int(request.form['poutcome'])
+            return render_template("result.html",prediction=prediction, prob = result)
+    except:
+        logger.warning("At least one user input not been filled")
+        return render_template("error.html")
 
 
-        customer1 = User(age=Age, job =Job, marital=Marital, education=Education, 
-            default=Default, balance=Balance, housing=Housing, loan=Loan, 
-            contact=Contact, day=Day, month=Month, campaign=Campaign, pdays=Pdays, 
-            previous=Previous, poutcome=Poutcome, y =int(result))
-
-        db.session.add(customer1)
-        db.session.commit()
-
-
-        return render_template("result.html",prediction=prediction, prob = result)
-
+@app.route("/error")
+def error():
+    return render_template('error.html', title='error')
 
 
 
