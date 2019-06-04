@@ -42,7 +42,7 @@ train_model:
   split_data:
     train_size: 0.7
     test_size: 0.3
-    random_state: 42
+    random_state: 77
     save_split_prefix: data/bank
   choose_features:
     features_to_use: ['age', 'job', 'marital', 'education', 'default',
