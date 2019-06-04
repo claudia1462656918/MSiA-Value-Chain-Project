@@ -16,12 +16,12 @@ logger = logging.getLogger(__name__)
 
 
 def evaluate_model(df_y_true, y_predicted, save_evaluation=None, **kwargs):
-    """Evaluate the performance of the model   
+   """Calculate the auc/f1/accuracy of the model we interested
     Args:
         df_y_true (:py:class:`pandas.DataFrame`): Dataframe containing true y class label
         y_predicted (:py:class:`pandas.DataFrame`): Dataframe containing predicted probability and class label
     Returns: 
-        confusion_df (:py:class:`pandas.DataFrame`): Dataframe reporting confusion matrix
+        metric (:py:class:`pandas.DataFrame`): Dataframe reporting accuracy, auc and f1
     """
     # get predicted probability of buying the financial product of the bank 
     y_pred_prob = y_predicted.iloc[:,0]
