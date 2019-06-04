@@ -312,15 +312,4 @@ def test_score_model():
 
 
         
-# def main():
-#     """Main function"""
-#     test_get_target()
-#     test_additional_processing()
-#     test_reduce_no_of_class()
-#     test_convert_types()
-#     test_choose_features()
-#     test_split_data()
-#     test_evaluate_model()
 
-# if __name__ == "__main__":
-#     main()
