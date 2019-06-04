@@ -1,6 +1,6 @@
 DEBUG = True
 LOGGING_CONFIG = "config/logging/local.conf"
-PORT = 8744
+PORT = 3000
 APP_NAME = "bank-customer-prediction"
 # import os
 # conn_type = "mysql+pymysql"
