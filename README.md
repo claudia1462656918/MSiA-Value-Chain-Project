@@ -195,14 +195,14 @@ To create the database locally in the location configured in `config.py` with on
 
 `cd path_to_repository/src`
 
-`python models.py`
+`python model.py`
 
 
 To create the database on RDS in the location configured in `config.py` with one initial bank customer, first change path to where the file is located and run: 
 
 `cd path_to_repository/src`
 
-`python models.py --RDS True`
+`python model.py --RDS True`
 
 
 
