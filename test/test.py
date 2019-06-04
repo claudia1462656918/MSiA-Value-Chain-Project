@@ -278,9 +278,9 @@ def test_train_model():
         # check type
         assert isinstance(model, xgb.XGBClassifier)
         
-        print('Test for split_data function PASSED!')
+        print('Test for train_model function PASSED!')
     except:
-        print('Test for split_data function FAILED!')
+        print('Test for train_model function FAILED!')
 
 
 
