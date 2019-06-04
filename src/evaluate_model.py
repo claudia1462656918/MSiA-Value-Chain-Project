@@ -16,12 +16,12 @@ logger = logging.getLogger(__name__)
 
 
 def evaluate_model(df_y_true, y_predicted, save_evaluation=None, **kwargs):
-   """Calculate the auc/f1/accuracy of the model we interested
+    """Calculat the accuracy, auc, and f1 of the model (here we use xgboost model) 
     Args:
         df_y_true (:py:class:`pandas.DataFrame`): Dataframe containing true y class label
         y_predicted (:py:class:`pandas.DataFrame`): Dataframe containing predicted probability and class label
     Returns: 
-        metric (:py:class:`pandas.DataFrame`): Dataframe reporting accuracy, auc and f1
+        metric (:py:class:`pandas.DataFrame`): Dataframe reporting f1, accuracy, auc score
     """
     # get predicted probability of buying the financial product of the bank 
     y_pred_prob = y_predicted.iloc[:,0]
@@ -100,4 +100,3 @@ def run_evaluation(args):
         print('please give a correct input path or fix corresponding section in config file')
 
         
-

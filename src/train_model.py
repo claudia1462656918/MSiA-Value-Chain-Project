@@ -87,13 +87,12 @@ def split_data(X, y, train_size=1, test_size=0, random_state=10, save_split_pref
 
 
 def train_model(df, method=None, save_tmo=None, **kwargs):
-   """Function to train the model (we use xgb here) using the data given in by the user input
+    """Function to train a specifed model (xgboost here) using the dataframe given by the input.
     Args:
-        df (:py:class:`pandas.DataFrame`): DataFrame of all data
+        df (:py:class:`pandas.DataFrame`): DataFrame excluding target variables.
         method (dict): Name of the model that we want to train.
         save_tmo (str): Trained model path to save
         **kwargs: Other parameters of the model specified in config: max_depth, n_estimators, learning_rate 
-
     Returns:
         model: return a xgboost model
     
@@ -173,4 +172,3 @@ def run_training(args):
         with open(args.output, "wb") as f:
             pickle.dump(tmo, f)
         logger.info("Trained model object saved to %s", args.output)
-

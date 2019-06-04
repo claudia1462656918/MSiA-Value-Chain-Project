@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 
 def score_model(df, path_to_tmo, cutoff, save_scores=None, **kwargs):
-    """Given the prediction about whether customers buy the bank product  for the test set.
+    """Given the prediction about whether customers buy the bank product for the test set.
     Args:
         df (:py:class:`pandas.DataFrame`): Dataframe with the bank data to give prediction.
         path_to_tmo (str): trained model path
