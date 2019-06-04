@@ -31,7 +31,7 @@ def score_model(df, path_to_tmo, cutoff, save_scores=None, **kwargs):
         save_scores (str): path where the result of the prediction values are saved 
         
     Returns:
-        y_predicted (:py:class:`pandas.DataFrame`): 2 column dataframe with predicted probability and class.
+        y_pred (:py:class:`pandas.DataFrame`): 2 column dataframe with predicted probability and class.
     
     """
     # load the saved xgboost model 
