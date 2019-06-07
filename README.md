@@ -241,7 +241,7 @@ After adopting corresponding changes, run
 
 ### 5. Interact with the application 
 
-Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of the app. 
+Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of the app. Please click the discover button on the first image to make the prediction.
 
 ## Testing 
 
