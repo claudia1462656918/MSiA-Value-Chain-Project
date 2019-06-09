@@ -282,7 +282,7 @@ def test_train_model():
                                   'contact', 'day', 'month', 'campaign', 
                                   'pdays', 'previous','poutcome']}
              }
-
+    # fit the model based on the input specified 
     model = tm.train_model(df, method, **kwargs)
  
     try:
@@ -302,9 +302,8 @@ def test_train_model_input():
 
         # load sample test data
         df = pd.read_csv('data/bank_processed.csv')
-        df['age'] = df['age'].astype(str)
-        print(type(df['age']))
-        
+        # change the data type of age from int to string 
+        df['age'] = df['age'].astype(str)        
         method = 'xgboost'
 
         kwargs = {'params':{"max_depth":3, 'n_estimators': 300,'learning_rate': 0.05},
@@ -316,10 +315,8 @@ def test_train_model_input():
                                       'contact', 'day', 'month', 'campaign', 
                                       'pdays', 'previous','poutcome']}
                  }
-
+        # fit the model
         model = tm.train_model(df, method, **kwargs)
-
-
 
     # raise AssertionError if error message is not as expected
     # remove trailing white space and space in the message 
@@ -388,6 +385,7 @@ def test_score_model():
                                    'default', 'balance', 'housing','loan', 
                                    'contact', 'day', 'month', 'campaign', 
                                    'pdays', 'previous','poutcome']}}
+    # score the model based on the input given 
     actual = sm.score_model(df, path_to_tmo, cutoff, save_scores=None, **kwargs)
     
     n1 = (sum(actual.pred_prob.between(0,1,inclusive=True)))
@@ -397,10 +395,33 @@ def test_score_model():
         assert isinstance(actual, pd.DataFrame)
         # check whether all data probability range is [0,1]
         assert n1==n2
-        print('Test for split_data function PASSED!')
+        print('Test for score_model function PASSED!')
     except:
-        print('Test for split_data function FAILED!')
-    
+        print('Test for score_model function FAILED!')
+
+
+def test_score_model_input():
+    """Test whether the input data are numeric or boolean, as the only types of data that xgboost model accepts."""
+    with pytest.raises(ValueError) as message:
+        df = pd.read_csv('data/bank_processed.csv')
+        # change the data type of age from int to string 
+        df['age'] = df['age'].apply(str)
+        path_to_tmo = 'models/bank-prediction.pkl'
+        cutoff = 0.5
+        kwargs = {"choose_features": {'features_to_use': 
+                                  ['age', 'job', 'marital', 'education', 
+                                   'default', 'balance', 'housing','loan', 
+                                   'contact', 'day', 'month', 'campaign', 
+                                   'pdays', 'previous','poutcome']}}
+        # score the model based on the parameters specified 
+        sm.score_model(df, path_to_tmo, cutoff, save_scores=None, **kwargs)
+
+    # score model will raise a value error if the input data type is not int, float, or bool 
+    # raise AssertionError if error message is not as expected
+    # remove trailing white space and space in the message    
+    assert str(message.value).replace(" ", "").replace('\n','') == 'DataFrame.dtypesfordatamustbeint,floatorbool.Didnotexpectthedatatypesinfieldsage'
+    print('Input test for score_model function PASSED!')
+
 
 
         

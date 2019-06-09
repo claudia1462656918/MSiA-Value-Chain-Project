@@ -6,3 +6,17 @@
 0   1    0    1        0          1 ...         2      2         2         0  1
 
 [1 rows x 17 columns]
+2019-06-08 16:56:27,853 INFO     RDS:False
+2019-06-08 16:56:27,868 INFO     database created
+2019-06-08 16:56:27,872 INFO     Data added
+2019-06-08 16:56:27,875 INFO        id  age  job  marital  education  ...  campaign  pdays  previous  poutcome  y
+0   1    0    1        0          1  ...         2      2         2         0  1
+
+[1 rows x 17 columns]
+2019-06-09 15:08:30,291 INFO     RDS:False
+2019-06-09 15:08:30,321 INFO     database created
+2019-06-09 15:08:30,324 INFO     Data added
+2019-06-09 15:08:30,328 INFO        id  age  job  marital  education  default  ...  month  campaign  pdays  previous  poutcome  y
+0   1    0    1        0          1        0  ...      0         2      2         2         0  1
+
+[1 rows x 17 columns]
