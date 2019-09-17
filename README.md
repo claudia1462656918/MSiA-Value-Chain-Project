@@ -250,6 +250,5 @@ Run `make test` from the command line in the main project repository.
 
 Tests exist in `test/test.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTQyMzExOTRdfQ==
+eyJoaXN0b3J5IjpbLTI4ODU2NTAzMiwtMTM5NDIzMTE5NF19
 -->
-
