@@ -2,7 +2,7 @@ awscli==1.16.162
 boto3==1.9.134
 flask==1.0.2
 flask-sqlalchemy  == 2.3.2
-numpy==1.16.3
+numpy==1.22.0
 pandas==0.24.2
 PyMySQL==0.9.3
 pytest==4.0.1
